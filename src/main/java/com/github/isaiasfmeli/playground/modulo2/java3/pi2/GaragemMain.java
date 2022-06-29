@@ -49,7 +49,7 @@ public class GaragemMain {
 
         // Com o preço médio total de toda a lista de veículos.
         IntSummaryStatistics stats = garagem.getVeiculos().stream()
-                .mapToInt((x) -> x.getPreco())
+                .mapToInt((v) -> v.getPreco())
                 .summaryStatistics();
         System.out.printf("O preço médio dos Veículos é %f", stats.getAverage());
     }
