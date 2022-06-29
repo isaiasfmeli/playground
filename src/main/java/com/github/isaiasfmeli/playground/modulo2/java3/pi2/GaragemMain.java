@@ -27,13 +27,13 @@ public class GaragemMain {
 
         // Preco Sort
         garagem.getVeiculos().stream()
-                .sorted(Comparator.comparing(v -> Integer.valueOf(v.getPreco())))
+                .sorted(Comparator.comparing(Veiculo::getPreco))
                 .forEach(v -> System.out.println(v.getPreco() + " - " + v.toString()));
         System.out.println("----------");
 
         // Marca Sort
         garagem.getVeiculos().stream()
-                .sorted(Comparator.comparing(v -> v.getMarca()))
+                .sorted(Comparator.comparing(Veiculo::getMarca))
                 .forEach(v -> System.out.println(v.getMarca() + " - " + v.toString()));
         System.out.println("----------");
 
@@ -46,10 +46,10 @@ public class GaragemMain {
         // Filter preco maior ou igual a 1000
         garagem.getVeiculos().stream()
                 .filter(v -> v.getPreco() >= 1000)
-                .sorted(Comparator.comparing(v -> Integer.valueOf(v.getPreco())))
+                .sorted(Comparator.comparing(Veiculo::getPreco))
                 .forEach(v -> System.out.println(v.getPreco() + " - " + v.toString()));
 
-        // Com o preço médio total de toda a lista de veículos.
+        // Preço médio total de toda a lista de veículos
         OptionalDouble average = garagem.getVeiculos().stream().mapToDouble(Veiculo::getPreco).average();
         System.out.printf("O preço médio dos Veículos é %f\n", average.getAsDouble());
 
