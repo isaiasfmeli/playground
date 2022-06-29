@@ -1,4 +1,4 @@
-package com.github.isaiasfmeli.playground.modulo2;
+package com.github.isaiasfmeli.playground.modulo2.java1.pi2;
 
 public class CorridaNaSelva {
 

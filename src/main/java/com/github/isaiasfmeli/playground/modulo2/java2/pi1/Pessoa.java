@@ -1,6 +1,4 @@
-package com.github.isaiasfmeli.playground.modulo2.java2.ex1;
-
-import java.util.Arrays;
+package com.github.isaiasfmeli.playground.modulo2.java2.pi1;
 
 public class Pessoa {
 
