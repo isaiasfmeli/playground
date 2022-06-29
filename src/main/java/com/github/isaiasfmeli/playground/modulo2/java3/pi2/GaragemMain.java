@@ -2,6 +2,7 @@ package com.github.isaiasfmeli.playground.modulo2.java3.pi2;
 
 import java.util.Comparator;
 import java.util.IntSummaryStatistics;
+import java.util.OptionalDouble;
 
 public class GaragemMain {
 
@@ -49,9 +50,12 @@ public class GaragemMain {
                 .forEach(v -> System.out.println(v.getPreco() + " - " + v.toString()));
 
         // Com o preço médio total de toda a lista de veículos.
+        OptionalDouble average = garagem.getVeiculos().stream().mapToDouble(Veiculo::getPreco).average();
+        System.out.printf("O preço médio dos Veículos é %f\n", average.getAsDouble());
+
         IntSummaryStatistics stats = garagem.getVeiculos().stream()
                 .mapToInt((v) -> v.getPreco())
                 .summaryStatistics();
-        System.out.printf("O preço médio dos Veículos é %f", stats.getAverage());
+        System.out.printf("Resumo: %s\n", stats.toString());
     }
 }
