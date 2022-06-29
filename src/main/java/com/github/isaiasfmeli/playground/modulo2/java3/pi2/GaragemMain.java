@@ -25,27 +25,28 @@ public class GaragemMain {
         garagem.putVeiculo(new Veiculo("Logan", Veiculo.Marca.RENAULT, 950));
 
         // Preco Sort
-        garagem.getVeiculos().stream().sorted(new Comparator<Veiculo>() {
-            @Override
-            public int compare(Veiculo v1, Veiculo v2) {
-                return Integer.valueOf(v1.getPreco()).compareTo(Integer.valueOf(v2.getPreco()));
-            }
-        }).forEach(v -> System.out.println(v.getPreco() + " - " + v.toString()));
+        garagem.getVeiculos().stream()
+                .sorted(Comparator.comparing(v -> Integer.valueOf(v.getPreco())))
+                .forEach(v -> System.out.println(v.getPreco() + " - " + v.toString()));
         System.out.println("----------");
-        // Marca Sort
-        garagem.getVeiculos().stream().sorted(new Comparator<Veiculo>() {
-            @Override
-            public int compare(Veiculo v1, Veiculo v2) {
-                return v1.getMarca().compareTo(v2.getMarca());
-            }
-        }).forEach(v -> System.out.println(v.getMarca() + " - " + v.toString()));
 
+        // Marca Sort
+        garagem.getVeiculos().stream()
+                .sorted(Comparator.comparing(v -> v.getMarca()))
+                .forEach(v -> System.out.println(v.getMarca() + " - " + v.toString()));
         System.out.println("----------");
+
         // Filter preco até 1000
-        garagem.getVeiculos().stream().filter(v -> v.getPreco() < 1000).forEach(v -> System.out.println(v.getPreco() + " - " + v.toString()));
+        garagem.getVeiculos().stream()
+                .filter(v -> v.getPreco() < 1000)
+                .forEach(v -> System.out.println(v.getPreco() + " - " + v.toString()));
         System.out.println("----------");
+
         // Filter preco maior ou igual a 1000
-        garagem.getVeiculos().stream().filter(v -> v.getPreco() >= 1000).forEach(v -> System.out.println(v.getPreco() + " - " + v.toString()));
+        garagem.getVeiculos().stream()
+                .filter(v -> v.getPreco() >= 1000)
+                .sorted(Comparator.comparing(v -> Integer.valueOf(v.getPreco())))
+                .forEach(v -> System.out.println(v.getPreco() + " - " + v.toString()));
 
         // Com o preço médio total de toda a lista de veículos.
         IntSummaryStatistics stats = garagem.getVeiculos().stream()
