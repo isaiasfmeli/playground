@@ -7,12 +7,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // indica que esta classe é controller Rest
-@RequestMapping("/hello")
-public class Hello {
+@RequestMapping("/")
+public class IndexController {
 
     @GetMapping // requesição GET
     public String index() {
-        return "Hello!";
+        return "IndexController - Pong!";
     }
 
     @GetMapping("/{name}")

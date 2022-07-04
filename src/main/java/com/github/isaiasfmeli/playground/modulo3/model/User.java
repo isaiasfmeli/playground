@@ -23,4 +23,11 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+    public static User builder(String name)
+    {
+        User user = new User();
+        user.setName(name);
+        return user;
+    }
 }
