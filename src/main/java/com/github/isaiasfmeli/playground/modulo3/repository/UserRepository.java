@@ -1,6 +1,7 @@
 package com.github.isaiasfmeli.playground.modulo3.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.isaiasfmeli.playground.modulo3.exception.NotFoundException;
 import com.github.isaiasfmeli.playground.modulo3.model.User;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +9,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserRepository {
@@ -16,7 +18,6 @@ public class UserRepository {
 
     public UserRepository()
     {
-
     }
 
     public List<User> getUsers()
@@ -30,7 +31,7 @@ public class UserRepository {
         return lista;
     }
 
-    public void saveUser(User user)
+    public User saveUser(User user)
     {
         ObjectMapper mapper = new ObjectMapper();
         List<User> lista = this.getUsers();
@@ -40,10 +41,19 @@ public class UserRepository {
             mapper.writeValue(new File(linkFile), listSave);
         } catch (Exception ex) {
         }
+        return user;
     }
 
-    public User getUser(String userName)
+    public Optional<User> getUser(String name)
     {
-        return User.builder(userName);
+        for(User user : this.getUsers())
+        {
+            if(user.getName().equals(name))
+            {
+                return Optional.of(user);
+            }
+        }
+        throw new NotFoundException("usuário não encontrado");
     }
+
 }
