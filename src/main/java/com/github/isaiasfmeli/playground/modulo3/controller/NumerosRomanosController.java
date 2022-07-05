@@ -11,32 +11,28 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/romanos")
 public class NumerosRomanosController {
 
-    final NumerosRomanosService nr;
-
     @Autowired
-    public NumerosRomanosController(NumerosRomanosService nr) {
-        this.nr = nr;
-    }
+    NumerosRomanosService service;
 
     @GetMapping()
     public String index()
     {
         return String.join(",",
                 "/toint/{romano}",
-                "/toromano/{inteiro}"
+                "/fromint/{inteiro}"
         );
     }
 
     @GetMapping("/toint/{romano}")
     public String convertToInt(@PathVariable String romano)
     {
-        return nr.convertToInt(romano).toString();
+        return service.convertToInt(romano).toString();
     }
 
-    @GetMapping("/toromano/{inteiro}")
-    public String convertToRomano(@PathVariable int inteiro)
+    @GetMapping("/fromint/{inteiro}")
+    public String convertFromInt(@PathVariable int inteiro)
     {
-        return nr.convertToRomano(inteiro);
+        return service.convertFromInt(inteiro);
     }
 
 }
