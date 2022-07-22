@@ -51,7 +51,7 @@ public class UsersController {
     public ResponseEntity<Users> updatePatch(
             @PathVariable Long id,
             @RequestBody Map<String, String> updates) {
-        return ResponseEntity.ok(service.updatePartial(id, updates).get());
+        return ResponseEntity.ok(service.updatePartial(id, updates));
     }
 
     @DeleteMapping("/{id}")
