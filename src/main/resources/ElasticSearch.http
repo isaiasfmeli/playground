@@ -1,0 +1,54 @@
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET _cluster/health
+
+GET _nodes/stats
+
+PUT comidas_preferidas
+
+DELETE comidas_preferidas
+
+GET _cat/indices?v=true
+
+POST comidas_preferidas/_doc
+{
+  "nome": "Isaias",
+  "comida": "pastel"
+}
+
+GET comidas_preferidas/_doc/dOqcHIIBtPJVhGQAZYlj
+
+GET comidas_preferidas/_stats
+
+PUT comidas_preferidas/_doc/1
+{
+  "nome": "Lucas",
+  "comida": "lasanha2"
+}
+
+GET comidas_preferidas/_doc/1
+
+GET comidas_preferidas/_search
+
+PUT comidas_preferidas/_settings
+{
+  "index": {
+   "number_of_replicas": 0
+  }
+}
+
+GET clientes/_search
+
+GET /clientes/_search
+{
+  "query": {
+    "match": {
+      "pais": "PE"
+    }
+  }
+}
