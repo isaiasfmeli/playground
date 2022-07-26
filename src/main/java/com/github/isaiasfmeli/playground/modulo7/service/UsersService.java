@@ -31,7 +31,7 @@ public class UsersService {
         return create(user);
     }
 
-    public Users updatePartial(long id, Map<String, String> changes) {
+    public Users updatePartial(long id, Map<String, Object> changes) {
         Optional<Users> userFound = findById(id);
         if (userFound.isPresent()) {
             ConfigurablePropertyAccessor propertyAccessor = PropertyAccessorFactory.forDirectFieldAccess(userFound.get());

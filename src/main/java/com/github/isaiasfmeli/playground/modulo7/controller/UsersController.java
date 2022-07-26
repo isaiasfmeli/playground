@@ -50,7 +50,7 @@ public class UsersController {
     @PatchMapping("/{id}")
     public ResponseEntity<Users> updatePatch(
             @PathVariable Long id,
-            @RequestBody Map<String, String> updates) {
+            @RequestBody Map<String, Object> updates) {
         return ResponseEntity.ok(service.updatePartial(id, updates));
     }
 
