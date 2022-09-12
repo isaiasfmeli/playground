@@ -3,10 +3,12 @@ package com.github.isaiasfmeli.playground.modulo7.controller;
 import com.github.isaiasfmeli.playground.modulo7.model.Movies;
 import com.github.isaiasfmeli.playground.modulo7.model.Users;
 import com.github.isaiasfmeli.playground.modulo7.service.MoviesService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,5 +36,10 @@ public class MoviesController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(user.get());
+    }
+
+    @GetMapping("/title/{title}")
+    public ResponseEntity<List<Movies>> byTitle(@PathVariable String title) {
+        return ResponseEntity.ok(service.findAllByTitle(title));
     }
 }
